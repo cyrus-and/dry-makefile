@@ -48,9 +48,12 @@ CXXFLAGS = -MMD $(COMPILER_FLAGS)
 LDFLAGS  = $(LINKER_FLAGS)
 LDLIBS   = $(LIBRARIES)
 
+# make sure to satisfy the setup hooks before building anything
+$(OBJECTS): $(SETUP_HOOK)
+
 # build all the targets using profiles
 BUILD_PROFILES ?= default
-$(BUILD_PROFILES): $(SETUP_HOOK) $(TARGETS)
+$(BUILD_PROFILES): $(TARGETS)
 $(TARGETS): %: %.o $(LIB_OBJECTS)
 
 # make the first profile the default target

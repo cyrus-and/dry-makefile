@@ -37,7 +37,7 @@ BUILD_PROFILES := release debug
 release: COMPILER_FLAGS += -O3 -Os
 debug:   COMPILER_FLAGS += -ggdb3 -Werror -DDEBUG
 
-# list of rules to be set as prerequisites of each build
+# list of rules to be set as prerequisites of each object
 SETUP_HOOK := setup
 setup:
     @echo Fetching auxiliary files...
