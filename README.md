@@ -7,7 +7,7 @@ Opinionated Makefile for simple C/C++ projects.
 Fetch the DRY Makefile:
 
 ```
-wget -Os https://raw.githubusercontent.com/cyrus-and/dry-makefile/master/Makefile
+wget -q https://raw.githubusercontent.com/cyrus-and/dry-makefile/master/Makefile
 ```
 
 Create the following `config.Makefile`:
