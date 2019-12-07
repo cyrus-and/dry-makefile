@@ -43,8 +43,8 @@ DEPENDENCIES := $(SOURCES:$(EXTENSION)=.d)
 CC := $(firstword $(COMPILE$(EXTENSION)))
 
 # set compiler and linker flags (they must be recursively expansible)
-CFLAGS   = -MMD $(COMPILER_FLAGS)
-CXXFLAGS = -MMD $(COMPILER_FLAGS)
+CFLAGS   = -MP -MMD $(COMPILER_FLAGS)
+CXXFLAGS = -MP -MMD $(COMPILER_FLAGS)
 LDFLAGS  = $(LINKER_FLAGS)
 LDLIBS   = $(LIBRARIES)
 
