@@ -20,8 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.PHONY: clean cleanall install uninstall
-
 # optionally include the user configuration file, otherwise the user Makefile
 # can include this one
 -include config.Makefile
@@ -69,18 +67,22 @@ compile_commands.json: $(SOURCES)
 	}' ,)] | sed 's/,]/]/' >$@
 
 # remove building files
+.PHONY: clean
 clean: $(CLEANUP_HOOK)
 	$(RM) $(OBJECTS) $(DEPENDENCIES) compile_commands.json
 
 # also remove targets
+.PHONY: cleanall
 cleanall: clean
 	$(RM) $(TARGETS)
 
 # copy the targets to the install location
+.PHONY: install
 install:
 	install $(TARGETS) $(INSTALL_PATH)
 
 # remove the targets from the install location
+.PHONY: uninstall
 uninstall:
 	$(RM) $(addprefix $(INSTALL_PATH)/,$(notdir $(TARGETS)))
 
