@@ -59,9 +59,18 @@ $(TARGETS): %: %.o $(LIB_OBJECTS)
 # make the first profile the default target
 .DEFAULT_GOAL := $(firstword $(BUILD_PROFILES))
 
+# generate the JSON compilation database used by LSP and others
+# https://clang.llvm.org/docs/JSONCompilationDatabase.html
+compile_commands.json: $(SOURCES)
+	@echo [ $(foreach SOURCE, $(SOURCES), '{ \
+		"directory": ".", \
+		"command": "$(CC) $(COMPILER_FLAGS) -c -o $(SOURCE:$(EXTENSION)=.o) $(SOURCE)", \
+		"file": "$(SOURCE)" \
+	}' ,)] | sed 's/,]/]/' >$@
+
 # remove building files
 clean: $(CLEANUP_HOOK)
-	$(RM) $(OBJECTS) $(DEPENDENCIES)
+	$(RM) $(OBJECTS) $(DEPENDENCIES) compile_commands.json
 
 # also remove targets
 cleanall: clean

@@ -60,6 +60,7 @@ Then use it like this:
 
 - `make` builds the default profile;
 - `make <name>` builds the `<name>` profile;
+- `make compile_commands.json` generates the [JSON Compilation Database](https://clang.llvm.org/docs/JSONCompilationDatabase.html) file;
 - `make clean` removes all the building files but not the targets;
 - `make cleanall` removes all the building files including the targets;
 - `make install` copies the targets to the install location;
