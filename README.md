@@ -38,13 +38,13 @@ release: COMPILER_FLAGS += -O3 -Os
 debug:   COMPILER_FLAGS += -ggdb3 -Werror -DDEBUG
 
 # list of rules to be set as prerequisites of each object
-SETUP_HOOK := external-file
-external-file:
+SETUP_HOOK := some-external-file
+some-external-file:
     wget -q https://example.com/$@
 
 # list of rules to be set as prerequisites of the `clean` rule
-CLEANUP_HOOK := cleanup
-cleanup:
+CLEANUP_HOOK := -some-private-rule
+-some-private-rule:
     $(RM) external-file
 
 # place additional custom rules here...
