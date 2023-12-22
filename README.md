@@ -10,7 +10,7 @@ Fetch the DRY Makefile:
 wget -q https://raw.githubusercontent.com/cyrus-and/dry-makefile/master/Makefile
 ```
 
-Create the following `config.Makefile`:
+Create the following `config.Makefile` (change it according to your needs):
 
 ```makefile
 # all the source files
